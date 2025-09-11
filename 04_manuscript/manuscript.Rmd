@@ -1,0 +1,24 @@
+---
+title: "HBR Maples Miniproject"
+author: "Siena Blier"
+date: "2025-09-11"
+output: pdf_document
+bibliography: references.bib
+csl: ecology.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+I am citing a paper [@juice2006a]
+
+# Methods
+
+# Results
+
+# Discussion
+
+# References
