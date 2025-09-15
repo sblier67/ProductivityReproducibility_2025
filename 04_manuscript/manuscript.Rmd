@@ -13,12 +13,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-I am citing a paper [@juice2006a]
+I am citing a paper [@juice2006a].
 
 # Methods
 
+I am citing another paper [@patykowski2018a].
+
 # Results
 
+And another one [@momen2015a].
+
 # Discussion
+
+... and you get the point [@kobe2002a].
 
 # References
