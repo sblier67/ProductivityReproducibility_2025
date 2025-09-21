@@ -17,14 +17,14 @@ I am citing a paper [@juice2006a].
 
 # Methods
 
-I am citing another paper [@patykowski2018a].
+I got the data from [@juice2019]. I am citing another paper @patykowski2018a.
 
 # Results
 
-And another one [@momen2015a].
+And another one @momen2015a
 
 # Discussion
 
-... and you get the point [@kobe2002a].
+... and you get the point @kobe2002
 
 # References
