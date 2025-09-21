@@ -11,12 +11,10 @@ affiliation:
   - id          : 1
     institution : Concordia University
 
-output: prereg::prereg_pdf
+output: pdf_document
 bibliography: prereg_references.bib
 csl: ecology.csl
 ---
-
-**Note** This document does not have citations inserted in the normal way (through Zotero plugin) because when I do so, the Rmd file fails to render. I am troubleshooting this for the final version of the miniproject, and for now have manually typed in in-text citations.
 
 # Study Information
 
@@ -38,7 +36,7 @@ Example: Effect of sugar on brownie tastiness. -->
 Example: Though there is strong evidence to suggest that sugar affects taste preferences, the effect has never been demonstrated in brownies. Therefore, we will measure taste preference for four different levels of sugar concentration in a standard brownie recipe to determine if the effect exists in this pastry. -->
 ```
 
-In this miniproject, I use the HBR maples dataset (Juice & Fahey 2019) from the lterdatasampler R package (Horst & Brun 2023) to study the effect of calcium addition on the growth of Sugar Maple (*Acer saccharum*) seedlings. Specifically, I ask the questions: Does calcium treatment affect (1) leaf dry mass and/or (2) stem dry mass? I use a simple t-test to look for a difference in these characteristics between seedlings that were on calcium-treated and reference sites.
+In this miniproject, I use the HBR maples dataset [@juice2019] from the lterdatasampler R package @horst2023 to study the effect of calcium addition on the growth of Sugar Maple (*Acer saccharum*) seedlings. Specifically, I ask the questions: Does calcium treatment affect (1) leaf dry mass and/or (2) stem dry mass? I use a simple t-test to look for a difference in these characteristics between seedlings that were on calcium-treated and reference sites.
 
 ## Hypotheses
 
@@ -78,7 +76,7 @@ This question has a variety of possible answers. The key is for a researcher to 
 Example: We have a between subjects design with 1 factor (sugar by mass) with 4 levels. -->
 ```
 
-(Juice & Fahey 2019) sampled seedlings on calcium-treated and reference sites using randomly placed transects. They collected data on various characteristics including leaf dry mass and stem dry mass, by sampling seedlings every ten steps.
+@juice2019 sampled seedlings on calcium-treated and reference sites using randomly placed transects. They collected data on various characteristics including leaf dry mass and stem dry mass, by sampling seedlings every ten steps.
 
 ## Randomization
 
@@ -130,7 +128,7 @@ The answer to this question requires a specific set of instructions so that anot
 Example: Participants will be recruited through advertisements at local pastry shops. Participants will be paid $10 for agreeing to participate (raised to $30 if our sample size is not reached within 15 days of beginning recruitment). Participants must be at least 18 years old and be able to eat the ingredients of the pastries. -->
 ```
 
-See (Juice & Fahey 2019) for details.
+See @juice2019 for details.
 
 ## Sample size
 
@@ -140,7 +138,7 @@ See (Juice & Fahey 2019) for details.
 Example: Our target sample size is 280 participants. We will attempt to recruit up to 320, assuming that not all will complete the total task. -->
 ```
 
-See (Juice & Fahey 2019) for details.
+See @juice2019 for details.
 
 ## Sample size rationale
 
