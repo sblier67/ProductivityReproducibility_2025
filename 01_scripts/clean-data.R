@@ -29,13 +29,6 @@ clean.data <- raw.data %>%
   # We only need to keep watershed, leaf_dry_mass and stem_dry_mass for our research question
   select(watershed, leaf_dry_mass, stem_dry_mass)
 
-# Change watershed to factor with two levels 
-clean.data$watershed <- as.factor(clean.data$watershed)
-
-# Check
-str(clean.data)
-
-
 # 4. Export clean data ----------------------------------------------------
 
 write.csv(clean.data, row.names = FALSE, "02_outdata/hbr-maples_clean-dataset.csv")  

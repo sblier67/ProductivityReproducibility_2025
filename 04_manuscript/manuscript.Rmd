@@ -2,29 +2,114 @@
 title: "HBR Maples Miniproject"
 author: "Siena Blier"
 date: "2025-09-11"
-output: pdf_document
+output:
+  pdf_document:
+    fig_caption: true
+header-includes:
+  - \usepackage{float}
 bibliography: references.bib
 csl: ecology.csl
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.pos = "H")
+
+# Load libraries
+library(car)
+library(dplyr)
+library(ggplot2)
 ```
 
 # Introduction
 
-I am citing a paper [@juice2006a].
+I am citing a paper [@juice2006a]. And another one @patykowski2018.
 
 # Methods
 
-I got the data from [@juice2019]. I am citing another paper @patykowski2018a.
+I got the data from [@juice2019].
+
+```{r import.data}
+clean.data <- read.csv("../02_outdata/hbr-maples_clean-dataset.csv")
+```
+
+We checked that the assumptions of a t-test were met.
+
+1.  Stem dry mass and leaf dry mass are both **continuous** variables.
+
+```{r look.continuous}
+head(clean.data$stem_dry_mass)
+head(clean.data$leaf_dry_mass)
+```
+
+2.  We assume that @juice2019 carried out **random sampling**.
+3.  The assumption of **homoscedasticity** is not respected, so we use a t-test with **unequal variance**
+
+```{r check.var}
+
+# Check equal variance for stem dry mass
+aggregate(stem_dry_mass~watershed, data=clean.data, var)
+leveneTest(clean.data$stem_dry_mass, clean.data$watershed)
+
+# Check equal variance for leaf dry mass
+aggregate(leaf_dry_mass~watershed, data=clean.data, var)
+leveneTest(clean.data$leaf_dry_mass, clean.data$watershed)
+```
+
+4.  The data are not **normally distributed**, but because we're dealing with a fairly large sample size (n = 359), we will still conduct the t-test.
+
+```{r check.normal}
+
+# Check normality of stem dry mass for reference samples
+
+clean.data.ref <- clean.data %>% 
+  filter(watershed == "Reference")
+
+shapiro.test(clean.data.ref$stem_dry_mass)
+shapiro.test(clean.data.ref$leaf_dry_mass)
+
+clean.data.w1 <- clean.data %>% 
+  filter(watershed == "W1")
+
+shapiro.test(clean.data.w1$stem_dry_mass)
+shapiro.test(clean.data.w1$leaf_dry_mass)
+
+rm(clean.data.ref, clean.data.w1)
+
+```
 
 # Results
 
-And another one @momen2015a
+A first look at the distribution of the data suggested there may be differences in stem and leaf dry mass between reference and calcium-treated seedlings.
+
+```{r histograms, fig.cap= "Distribution of stem dry mass (left) and leaf dry mass (right) of seedlings in reference (red) and calcium treated (blue) samples (n = 359).", fig.show="hold", out.width="50%"}
+
+# Histogram of stem dry mass
+ggplot(clean.data, aes(x = stem_dry_mass, fill = watershed)) +
+  geom_histogram(alpha = 0.6, position = "identity", bins = 30) +
+  labs(x = "Value", y = "Frequency") +
+  theme_classic()
+
+# Histogram of leaf dry mass
+ggplot(clean.data, aes(x = leaf_dry_mass, fill = watershed)) +
+  geom_histogram(alpha = 0.6, position = "identity", bins = 30) +
+  labs(x = "Value", y = "Frequency") +
+  theme_classic()
+```
+
+We found that stem and leaf dry mass differed significantly between calcium treated and reference samples.
+
+```{r t.test}
+
+# Test for differences in stem dry mass
+t.test(stem_dry_mass ~ watershed, data = clean.data, var.equal = FALSE) # Use Welch's Two Sample t-test (unequal variances)
+
+# Test for differenecs in leaf dry mass
+t.test(leaf_dry_mass ~ watershed, data = clean.data, var.equal = FALSE) # Use Welch's Two Sample t-test (unequal variances)
+```
 
 # Discussion
 
-... and you get the point @kobe2002
+A citation for the discussion @kobe2002.
 
 # References
