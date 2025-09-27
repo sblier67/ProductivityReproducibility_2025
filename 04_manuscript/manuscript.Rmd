@@ -1,5 +1,5 @@
 ---
-title: "HBR Maples Miniproject"
+title: "Effect of calcium addition on Sugar Maple seedling growth"
 author: "Siena Blier"
 date: "2025-09-11"
 output:

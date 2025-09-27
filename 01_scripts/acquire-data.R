@@ -5,17 +5,12 @@
 
 # 0. Set Up ---------------------------------------------------------------
 
+# Make sure our R environment is up-to-date (consistent with lockfile)
+renv::restore()
+renv::status()
+
 # Check working directory
 getwd()
-
-# Make sure our R environment is up-to-date (consistent with lockfile)
-renv::status()
-renv::restore()
-
-# Install packages 
-#install.packages("lterdatasampler")
-renv::snapshot() # ensures that the lockfile is updated with this new package
-                # so collaborators can download the data as needed!
 
 # Load libraries 
 library(lterdatasampler)
@@ -30,4 +25,4 @@ library(dplyr)
 glimpse(hbr_maples)
 
 # Export as csv
-write.csv(hbr_maples, "00_rawdata/20250914_hbr-maples_dataset.csv")
+write.csv(hbr_maples, "00_rawdata/20250914_hbr-maples_dataset.csv", row.names = FALSE)
